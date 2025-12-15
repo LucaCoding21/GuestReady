@@ -1,0 +1,15 @@
+# robots.txt for Guest Ready Cleaning
+# https://guestreadycleaning.ca
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://guestreadycleaning.ca/sitemap.xml
+
+# Crawl-delay (optional, be nice to crawlers)
+Crawl-delay: 1
+
+# Disallow admin or private paths (add as needed)
+# Disallow: /admin/
+# Disallow: /private/

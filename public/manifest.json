@@ -1,0 +1,42 @@
+{
+  "name": "Guest Ready Cleaning",
+  "short_name": "Guest Ready",
+  "description": "Same-week cleaning availability in South Surrey & White Rock. Background-checked cleaners, guest-ready guaranteed.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFBF5",
+  "theme_color": "#0D9488",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-CA",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Book Cleaning",
+      "short_name": "Book",
+      "description": "Request a cleaning quote",
+      "url": "/#quote",
+      "icons": [{ "src": "/logo.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Call Us",
+      "short_name": "Call",
+      "description": "Call Guest Ready Cleaning",
+      "url": "tel:7789970335"
+    }
+  ]
+}
