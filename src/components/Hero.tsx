@@ -27,22 +27,22 @@ const Hero = () => {
       {/* MAIN CONTENT - Added top padding to account for fixed header */}
       <div className="relative z-10 pt-24 lg:pt-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl mx-auto text-center md:text-left md:mx-0">
 
             {/* Location Tag */}
             <div className={`transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-sm font-medium">
                 <span className="w-2 h-2 bg-teal-400 rounded-full animate-pulse" />
-                Same-Week Availability in Greater Vancouver
+                Same Week Availability in Greater Vancouver
               </span>
             </div>
 
             {/* THE HEADLINE */}
             <h1 className={`mt-5 transition-all duration-700 delay-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[0.95] tracking-tight">
+              <span className="block text-6xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-[0.95] tracking-tight">
                 Your Home,
               </span>
-              <span className="block text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tight mt-2">
+              <span className="block text-6xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tight mt-2">
                 <span className="relative inline-block">
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 via-teal-400 to-teal-300">
                     Guest Ready
@@ -53,42 +53,41 @@ const Hero = () => {
             </h1>
 
             {/* Subheadline */}
-            <p className={`mt-5 text-lg lg:text-xl text-white/70 leading-relaxed max-w-xl transition-all duration-700 delay-[900ms] ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              We focus on what guests actually notice—kitchens, bathrooms, floors, entryways.
-              Professional, background-checked cleaners with same-week availability.
+            <p className={`mt-5 text-lg lg:text-xl text-white/70 leading-relaxed max-w-xl mx-auto md:mx-0 transition-all duration-700 delay-[900ms] ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              We focus on what guests actually notice: kitchens, bathrooms, floors, entryways.
+              Professional, background checked cleaners with same week availability.
             </p>
 
             {/* CTA Buttons */}
-            <div className={`mt-6 flex flex-wrap items-start gap-4 transition-all duration-700 delay-[1100ms] ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6 transition-all duration-700 delay-[1100ms] ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Book This Week - Always SMS */}
               <a
                 href="sms:7789970335"
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold text-lg rounded-full overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(20,184,166,0.4)]"
+                className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 sm:px-8 py-4 bg-teal-500 text-white font-bold text-lg rounded-full transition-all hover:scale-105 hover:bg-teal-600 hover:shadow-[0_0_40px_rgba(20,184,166,0.4)]"
               >
-                <span className="relative z-10">Book This Week</span>
-                <svg className="relative z-10 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span>Book This Week</span>
+                <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-                <div className="absolute inset-0 bg-gradient-to-r from-teal-400 to-teal-500 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
 
-              {/* Phone button with reply time */}
-              <div className="flex flex-col items-center">
+              {/* Phone button with caption */}
+              <div className="flex flex-col items-center w-full sm:w-auto">
                 <a
                   href="tel:7789970335"
-                  className="group inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/30 text-white font-semibold text-lg rounded-full hover:bg-white/20 transition-all"
+                  className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 sm:px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-teal-500/50 text-white font-semibold text-lg rounded-full hover:bg-white/20 transition-all"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  (778) 997-0335
+                  (778) 997 0335
                 </a>
-                <span className="mt-2 text-xs text-white/50">Replies in under 15 min</span>
+                <p className="mt-2 text-xs text-white/50">Replies in under 15 min</p>
               </div>
             </div>
 
             {/* Trust Row */}
-            <div className={`mt-8 flex flex-wrap items-center gap-6 transition-all duration-700 delay-[1300ms] ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`mt-8 flex flex-wrap items-center justify-center md:justify-start gap-6 transition-all duration-700 delay-[1300ms] ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Google Rating */}
               <div className="flex items-center gap-2">
                 <div className="flex">
@@ -108,7 +107,7 @@ const Hero = () => {
                 <svg className="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                Background-checked
+                Background checked
               </span>
 
               <div className="w-px h-6 bg-white/20 hidden sm:block" />

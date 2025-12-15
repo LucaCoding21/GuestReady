@@ -6,7 +6,7 @@ const reviews = [
     location: 'South Surrey',
     rating: 5,
     text: "Called on Monday, they came Wednesday. My in-laws were arriving Friday and I was panicking. The kitchen and bathrooms looked amazing—exactly what guests notice first. Huge relief.",
-    service: 'Guest-Ready Clean',
+    service: 'Instant Cleaning Express',
     avatar: 'SM',
   },
   {
@@ -14,7 +14,7 @@ const reviews = [
     location: 'White Rock',
     rating: 5,
     text: "We used their move-out service and got our full deposit back! The property manager was amazed at how clean everything was. Highly recommend for anyone moving.",
-    service: 'Move-Out Clean',
+    service: 'Instant Cleaning Express',
     avatar: 'MT',
   },
   {
@@ -30,7 +30,7 @@ const reviews = [
     location: 'Crescent Beach',
     rating: 5,
     text: "Hosting a dinner party and needed a quick clean. They focused on exactly what mattered—entryway, living room, kitchen, guest bathroom. Guests kept complimenting how nice everything looked.",
-    service: 'Guest-Ready Clean',
+    service: 'Instant Cleaning Express',
     avatar: 'DR',
   },
   {
@@ -81,43 +81,15 @@ const Reviews = () => {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center max-w-3xl mx-auto transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-100 text-teal-700 text-sm font-semibold">
-            <span className="w-2 h-2 bg-teal-500 rounded-full" />
-            Real Results
-          </span>
-          <h2 className="mt-6 text-4xl lg:text-5xl font-bold text-warm-900 leading-tight">
-            They Needed It{' '}
+          <h2 className="text-4xl lg:text-5xl font-bold text-warm-900 leading-tight">
+            Happy Customers,{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-600">
-              Fast. We Delivered.
+              Happy Home
             </span>
           </h2>
           <p className="mt-4 text-lg text-warm-600 leading-relaxed">
-            When everyone else was booked, we had availability.
-            Here's what happened next.
+            Got a messy home? We can clean it on the same week. Here's what our clients have to say.
           </p>
-        </div>
-
-        {/* Google Rating Banner */}
-        <div className={`mt-12 flex justify-center transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="inline-flex items-center gap-4 px-6 py-3 bg-white rounded-full shadow-lg border border-warm-100">
-            <img
-              src="https://www.google.com/favicon.ico"
-              alt="Google"
-              loading="lazy"
-              className="w-6 h-6"
-            />
-            <div className="flex items-center gap-2">
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <span className="font-bold text-warm-900">5.0</span>
-              <span className="text-warm-500">rating on Google</span>
-            </div>
-          </div>
         </div>
 
         {/* Reviews Grid */}

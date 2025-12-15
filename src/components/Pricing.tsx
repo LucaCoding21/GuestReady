@@ -2,15 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 
 const packages = [
   {
-    name: 'Guest-Ready Express',
+    name: 'Instant Cleaning Express',
     price: 249,
     size: 'Up to 2 bed / 1 bath',
     description: 'Quick refresh before guests arrive',
     features: [
-      'Kitchen deep clean',
-      'Bathroom sanitization',
-      'All floors mopped & vacuumed',
-      'High-touch surfaces wiped',
+      'All rooms cleaned, dusted & tidied',
+      'Kitchen cleaned (surfaces, sink, dishes, stovetop)',
+      'Bathroom fully cleaned & sanitized',
+      'All floors vacuumed & mopped',
+      'High touch surfaces wiped',
     ],
     popular: false,
   },
@@ -20,10 +21,10 @@ const packages = [
     size: 'Up to 3 bed / 2 bath',
     description: 'Full home detail for hosting',
     features: [
-      'Everything in Express, plus:',
-      'Inside appliances cleaned',
+      'Includes Instant Cleaning Express',
+      'Inside microwave, stovetop detailed',
       'Baseboards & light fixtures',
-      'Behind furniture & under beds',
+      'Detailed bedroom cleaning',
     ],
     popular: true,
   },
@@ -31,12 +32,12 @@ const packages = [
     name: 'Premium Host Package',
     price: 499,
     size: 'Up to 4 bed / 3 bath',
-    description: 'The works—impress everyone',
+    description: '+$50 for bedsheets and laundry',
     features: [
-      'Everything in Deep Clean, plus:',
+      'Includes Deep Clean Service',
       'Fridge & oven detail',
       'Interior windows',
-      'Cabinet fronts & door frames',
+      'Cabinet fronts, curtains & walls',
     ],
     popular: false,
   },
@@ -76,7 +77,7 @@ const Pricing = () => {
             Simple, Transparent Pricing
           </h2>
           <p className="mt-3 text-warm-600">
-            No hidden fees. No surprises. Just a clean home.
+            No hidden fees. No surprises. Only clean homes.
           </p>
         </div>
 
@@ -116,23 +117,23 @@ const Pricing = () => {
                   <div className="flex items-baseline gap-1">
                     <span className="text-4xl lg:text-5xl font-bold text-warm-900">${pkg.price}</span>
                   </div>
-                  <p className="text-sm text-warm-500 mt-1">{pkg.description}</p>
+                  <p className={`text-sm mt-1 ${pkg.description.includes('+$') ? 'text-green-600 font-medium' : 'text-warm-500'}`}>{pkg.description}</p>
                 </div>
 
                 {/* Features */}
                 <ul className="mt-6 space-y-3">
                   {pkg.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      {feature.includes('Everything') ? (
-                        <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    <li key={i} className="flex items-center gap-3">
+                      {feature.includes('Includes') ? (
+                        <svg className="w-5 h-5 flex-shrink-0 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
                         </svg>
                       ) : (
-                        <svg className="w-5 h-5 text-teal-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 flex-shrink-0 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                       )}
-                      <span className={`text-sm ${feature.includes('Everything') ? 'text-teal-700 font-medium' : 'text-warm-600'}`}>
+                      <span className={`text-sm ${feature.includes('Includes') ? 'text-green-600 font-medium' : 'text-warm-600'}`}>
                         {feature}
                       </span>
                     </li>

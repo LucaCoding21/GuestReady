@@ -41,8 +41,16 @@ const About = () => {
                 />
               </div>
 
-              {/* Trust Badge - Bottom Left */}
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-xl shadow-lg p-4 border border-warm-100">
+              {/* Availability Badge - Top Left */}
+              <div className="absolute -top-4 -left-4 bg-teal-600 text-white rounded-xl shadow-lg px-4 py-3">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                  <span className="text-sm font-bold">Available Spots This Week</span>
+                </div>
+              </div>
+
+              {/* Trust Badge - Bottom Right */}
+              <div className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-lg p-4 border border-warm-100">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
                     <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
@@ -53,14 +61,6 @@ const About = () => {
                     <div className="text-sm font-bold text-warm-900">Background Checked</div>
                     <div className="text-xs text-warm-500">& Fully Insured</div>
                   </div>
-                </div>
-              </div>
-
-              {/* Availability Badge - Top Right */}
-              <div className="absolute -top-4 -right-4 bg-teal-600 text-white rounded-xl shadow-lg px-4 py-3">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                  <span className="text-sm font-bold">Spots Available This Week</span>
                 </div>
               </div>
             </div>
@@ -78,7 +78,7 @@ const About = () => {
             </h2>
 
             <p className="mt-5 text-lg text-warm-600 leading-relaxed">
-              We know you've called around. Most services are slammed right now. That's exactly why we exist—to help when you actually need it, not three weeks from now.
+              We know you've called around. Most services are slammed right now. That's exactly why we exist to help when you actually need it, not three weeks from now.
             </p>
 
             {/* The 3 Deal Breakers - Visual hierarchy */}
@@ -128,47 +128,19 @@ const About = () => {
               ))}
             </div>
 
-            {/* The Guarantee - Risk Reversal */}
-            <div className={`mt-8 p-5 bg-gradient-to-r from-teal-50 to-teal-100/50 rounded-xl border border-teal-200 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-teal-600 text-white flex items-center justify-center">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="font-bold text-warm-900 text-lg">Guest-Ready Guarantee</h3>
-                  <p className="text-warm-700 text-sm mt-1">
-                    Not happy? We come back and fix it—free. No questions, no hassle.
-                  </p>
-                </div>
-              </div>
+            {/* CTA Button */}
+            <div className={`mt-8 text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <a
+                href="sms:7789970335"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-teal-500 text-white font-bold text-lg rounded-full transition-all hover:scale-105 hover:bg-teal-600 hover:shadow-[0_0_40px_rgba(20,184,166,0.4)]"
+              >
+                Reserve Your Spot This Week
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </div>
-          </div>
-        </div>
 
-        {/* Social Proof Bar - Quick hits */}
-        <div className={`mt-16 transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="bg-warm-900 rounded-2xl p-6 lg:p-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 text-center">
-              {[
-                { value: '5.0', label: 'Google Rating', icon: '★' },
-                { value: '100%', label: 'Background-Checked', icon: '✓' },
-                { value: '48hr', label: 'Avg. Booking', icon: '⚡' },
-                { value: '0', label: 'Risk To You', icon: '🛡' },
-              ].map((stat, index) => (
-                <div
-                  key={stat.label}
-                  className={`transition-all duration-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}
-                  style={{ transitionDelay: `${700 + index * 100}ms` }}
-                >
-                  <div className="text-3xl lg:text-4xl font-bold text-white">
-                    {stat.value}
-                  </div>
-                  <div className="text-warm-400 text-sm mt-1">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 

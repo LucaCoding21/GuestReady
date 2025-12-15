@@ -35,6 +35,7 @@ const transformations = [
 
 const BeforeAfter = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<{ image: string; label: string } | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -75,15 +76,18 @@ const BeforeAfter = () => {
         </div>
 
         {/* Before/After Grid - Horizontal scroll on mobile, 3x2 grid on desktop */}
-        <div className="flex md:grid md:grid-cols-3 gap-4 lg:gap-5 overflow-x-auto pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scrollbar-hide">
+        <div className="flex md:grid md:grid-cols-3 gap-4 lg:gap-6 overflow-x-auto pb-4 md:pb-0 snap-x snap-mandatory md:snap-none scrollbar-hide">
           {transformations.map((item, index) => (
             <div
               key={item.id}
-              className={`group relative flex-shrink-0 w-72 md:w-auto snap-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`group relative flex-shrink-0 w-[85vw] sm:w-[28rem] md:w-auto snap-center transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${200 + index * 100}ms` }}
             >
               {/* Image Container */}
-              <div className="relative rounded-2xl overflow-hidden bg-warm-800 shadow-2xl">
+              <div
+                className="relative rounded-2xl overflow-hidden bg-warm-800 shadow-2xl cursor-pointer"
+                onClick={() => setSelectedImage({ image: item.image, label: item.label })}
+              >
                 <img
                   src={item.image}
                   alt={`Before and after ${item.label} cleaning`}
@@ -138,6 +142,42 @@ const BeforeAfter = () => {
         </div>
 
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors z-10"
+            onClick={() => setSelectedImage(null)}
+            aria-label="Close"
+          >
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          {/* Image container */}
+          <div
+            className="relative max-w-5xl max-h-[90vh] w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.image}
+              alt={`Before and after ${selectedImage.label} cleaning`}
+              className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+            />
+
+            {/* Label */}
+            <p className="text-center text-white/80 mt-4 text-lg font-medium">
+              {selectedImage.label}
+            </p>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

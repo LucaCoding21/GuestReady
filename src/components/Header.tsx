@@ -21,9 +21,11 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || isMobileMenuOpen
-          ? 'bg-warm-900/95 backdrop-blur-lg shadow-lg shadow-black/10'
-          : 'bg-transparent'
+        isMobileMenuOpen
+          ? 'bg-white shadow-lg'
+          : isScrolled
+            ? 'bg-warm-900/95 backdrop-blur-lg shadow-lg shadow-black/10'
+            : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -67,21 +69,32 @@ const Header = () => {
             Book This Week
           </a>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Animated Hamburger */}
           <button
-            className="md:hidden text-white p-2"
+            className={`md:hidden p-2 relative w-10 h-10 focus:outline-none transition-colors duration-300 ${
+              isMobileMenuOpen ? 'text-warm-800' : 'text-white'
+            }`}
             aria-label="Menu"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
+            <span className="sr-only">Toggle menu</span>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-5">
+              <span
+                className={`absolute left-0 w-full h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
+                  isMobileMenuOpen ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-0'
+                }`}
+              />
+              <span
+                className={`absolute left-0 top-1/2 -translate-y-1/2 w-full h-0.5 bg-current transition-all duration-300 ease-in-out ${
+                  isMobileMenuOpen ? 'opacity-0 scale-x-0' : 'opacity-100 scale-x-100'
+                }`}
+              />
+              <span
+                className={`absolute left-0 w-full h-0.5 bg-current transform transition-all duration-300 ease-in-out ${
+                  isMobileMenuOpen ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-0'
+                }`}
+              />
+            </div>
           </button>
         </div>
       </div>
@@ -90,15 +103,18 @@ const Header = () => {
       <div className={`md:hidden transition-all duration-300 overflow-hidden ${
         isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
       }`}>
-        <nav className="px-6 pb-6 pt-2 flex flex-col gap-4 bg-warm-900/95 backdrop-blur-lg">
+        <nav className="px-6 pb-6 pt-2 flex flex-col gap-4 bg-white shadow-lg">
           {['Services', 'Pricing', 'About', 'Reviews', 'Contact'].map((item) => (
             <a
               key={item}
               href={item === 'Contact' ? '#quote' : `#${item.toLowerCase()}`}
               onClick={handleLinkClick}
-              className="text-white/80 hover:text-white font-medium py-2 transition-colors"
+              className="text-warm-800 hover:text-teal-600 font-medium text-lg py-2 transition-colors flex items-center justify-between"
             >
               {item}
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
             </a>
           ))}
           <a
