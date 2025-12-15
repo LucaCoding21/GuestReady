@@ -132,6 +132,7 @@ const BeforeAfter = () => {
           <p className="text-warm-400 mb-4">Your home could be next</p>
           <a
             href="sms:7789970335?body=Hi!%20I%27d%20like%20to%20book%20a%20cleaning%20this%20week."
+            onClick={() => window.gtag?.('event', 'contact_click', { method: 'sms', location: 'before_after_gallery' })}
             className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white font-bold rounded-full hover:bg-teal-500 transition-all hover:scale-105 shadow-lg shadow-teal-500/25"
           >
             Book Your Clean

@@ -77,6 +77,7 @@ function ReferralHero() {
               {/* Book This Week - Always SMS */}
               <a
                 href="sms:7789970335?body=Hi!%20I%27d%20like%20to%20book%20a%20cleaning%20this%20week."
+                onClick={() => window.gtag?.('event', 'contact_click', { method: 'sms', location: 'referral_hero_primary' })}
                 className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 sm:px-8 py-3.5 sm:py-4 bg-teal-500 text-white font-bold text-base sm:text-lg rounded-full transition-all hover:scale-105 hover:bg-teal-600 hover:shadow-[0_0_40px_rgba(20,184,166,0.4)]"
               >
                 <span>Book This Week</span>
@@ -89,6 +90,7 @@ function ReferralHero() {
               <div className="flex flex-col items-center w-full sm:w-auto">
                 <a
                   href="tel:7789970335"
+                  onClick={() => window.gtag?.('event', 'contact_click', { method: 'phone', location: 'referral_hero_secondary' })}
                   className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 sm:px-8 py-3.5 sm:py-4 bg-white/10 backdrop-blur-md border-2 border-teal-500/50 text-white font-semibold text-base sm:text-lg rounded-full hover:bg-white/20 transition-all"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -207,6 +209,7 @@ function ReferralHeader() {
           {/* CTA Button - Desktop */}
           <a
             href="sms:7789970335?body=Hi!%20I%27d%20like%20to%20book%20a%20cleaning%20this%20week."
+            onClick={() => window.gtag?.('event', 'contact_click', { method: 'sms', location: 'referral_header_desktop' })}
             className={`hidden md:block px-6 py-3 font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-xl ${
               isScrolled
                 ? 'bg-gradient-to-r from-teal-500 to-teal-600 text-white hover:shadow-teal-500/25 hover:shadow-2xl'
@@ -252,6 +255,7 @@ function ReferralHeader() {
           ))}
           <a
             href="sms:7789970335?body=Hi!%20I%27d%20like%20to%20book%20a%20cleaning%20this%20week."
+            onClick={() => window.gtag?.('event', 'contact_click', { method: 'sms', location: 'referral_header_mobile' })}
             className="mt-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold rounded-full text-center"
           >
             Book This Week

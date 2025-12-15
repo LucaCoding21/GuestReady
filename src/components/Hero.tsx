@@ -67,6 +67,7 @@ const Hero = () => {
               {/* Book This Week - Always SMS */}
               <a
                 href="sms:7789970335?body=Hi!%20I%27d%20like%20to%20book%20a%20cleaning%20this%20week."
+                onClick={() => window.gtag?.('event', 'contact_click', { method: 'sms', location: 'hero_primary' })}
                 className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 sm:px-8 py-4 bg-teal-500 text-white font-bold text-lg rounded-full transition-all hover:scale-105 hover:bg-teal-600 hover:shadow-[0_0_40px_rgba(20,184,166,0.4)]"
               >
                 <span>Book This Week</span>
@@ -79,6 +80,7 @@ const Hero = () => {
               <div className="flex flex-col items-center w-full sm:w-auto">
                 <a
                   href="tel:7789970335"
+                  onClick={() => window.gtag?.('event', 'contact_click', { method: 'phone', location: 'hero_secondary' })}
                   className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 sm:px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-teal-500/50 text-white font-semibold text-lg rounded-full hover:bg-white/20 transition-all"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

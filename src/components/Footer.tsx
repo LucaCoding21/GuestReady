@@ -20,6 +20,7 @@ const Footer = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    window.gtag?.('event', 'form_submit', { form_name: 'quote_request', location: 'footer' });
     console.log('Form submitted:', formData);
     alert('Thank you! We\'ll be in touch within 24 hours.');
   };
@@ -245,6 +246,7 @@ const Footer = () => {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    onClick={() => link.href.startsWith('sms:') && window.gtag?.('event', 'contact_click', { method: 'sms', location: 'footer_support', label: link.label })}
                     className="text-warm-400 hover:text-teal-300 transition-colors"
                   >
                     {link.label}
