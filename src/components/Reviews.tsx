@@ -138,7 +138,7 @@ const Reviews = () => {
         {/* Bottom CTA */}
         <div className={`mt-16 text-center transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <a
-            href="https://g.page/r/YOUR_GOOGLE_BUSINESS_LINK/review"
+            href="https://share.google/mR69ktPP1FQlostE7"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-6 py-3 text-warm-600 font-semibold hover:text-teal-600 transition-colors"
