@@ -181,7 +181,7 @@ export default function ReferralPage() {
         <p className="text-sm md:text-base font-medium">
           <span className="font-bold">{partner.name} sent you!</span>
           <span className="mx-2">🎉</span>
-          <span className="text-teal-100">Priority booking + free fridge or microwave clean</span>
+          <span className="text-teal-100">Priority booking + free laundry load (towels/linen)</span>
         </p>
       </div>
 
