@@ -131,7 +131,7 @@ const BeforeAfter = () => {
         <div className={`mt-12 text-center transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-warm-400 mb-4">Your home could be next</p>
           <a
-            href="#contact"
+            href="sms:7789970335?body=Hi!%20I%27d%20like%20to%20book%20a%20cleaning%20this%20week."
             className="inline-flex items-center gap-2 px-6 py-3 bg-teal-600 text-white font-bold rounded-full hover:bg-teal-500 transition-all hover:scale-105 shadow-lg shadow-teal-500/25"
           >
             Book Your Clean

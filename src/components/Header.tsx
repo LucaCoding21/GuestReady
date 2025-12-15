@@ -59,7 +59,7 @@ const Header = () => {
 
           {/* CTA Button - Desktop */}
           <a
-            href="sms:7789970335"
+            href="sms:7789970335?body=Hi!%20I%27d%20like%20to%20book%20a%20cleaning%20this%20week."
             className={`hidden md:block px-6 py-3 font-bold rounded-full transition-all duration-300 hover:scale-105 shadow-xl ${
               isScrolled
                 ? 'bg-gradient-to-r from-teal-500 to-teal-600 text-white hover:shadow-teal-500/25 hover:shadow-2xl'
@@ -118,7 +118,7 @@ const Header = () => {
             </a>
           ))}
           <a
-            href="sms:7789970335"
+            href="sms:7789970335?body=Hi!%20I%27d%20like%20to%20book%20a%20cleaning%20this%20week."
             className="mt-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold rounded-full text-center"
           >
             Book This Week

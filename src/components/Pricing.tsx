@@ -142,7 +142,7 @@ const Pricing = () => {
 
                 {/* CTA Button */}
                 <a
-                  href="#contact"
+                  href={`sms:7789970335?body=Hi!%20I%27m%20interested%20in%20the%20${encodeURIComponent(pkg.name)}%20package.`}
                   className={`mt-8 block w-full py-3.5 text-center font-bold rounded-xl transition-all ${
                     pkg.popular
                       ? 'bg-teal-600 text-white hover:bg-teal-700 shadow-lg shadow-teal-500/25'
@@ -160,7 +160,7 @@ const Pricing = () => {
         <div className={`mt-10 text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <p className="text-warm-600">
             Larger home?{' '}
-            <a href="sms:7789970335" className="text-teal-600 font-semibold hover:text-teal-700 underline underline-offset-2">
+            <a href="sms:7789970335?body=Hi!%20I%20have%20a%20larger%20home%20and%20need%20a%20custom%20quote." className="text-teal-600 font-semibold hover:text-teal-700 underline underline-offset-2">
               Text us for a quick quote
             </a>
           </p>

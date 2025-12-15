@@ -42,9 +42,9 @@ const Footer = () => {
       { label: 'Careers', href: '#' },
     ],
     support: [
-      { label: 'Get a Quote', href: '#quote' },
+      { label: 'Get a Quote', href: 'sms:7789970335?body=Hi!%20I%27d%20like%20to%20get%20a%20quote.' },
       { label: 'FAQ', href: '#' },
-      { label: 'Contact Us', href: '#quote' },
+      { label: 'Contact Us', href: 'sms:7789970335?body=Hi!%20I%20have%20a%20question.' },
       { label: 'Cancellation Policy', href: '#' },
     ],
   };

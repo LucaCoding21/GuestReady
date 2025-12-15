@@ -108,6 +108,27 @@ body {
   background-color: #F8FAFC;
 }
 
+/* Respect user's reduced motion preference - critical for accessibility and battery */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Optimize animations on mobile for better performance */
+@media (max-width: 768px) {
+  * {
+    /* Use GPU-accelerated transforms */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
 /* Animation delay utilities */
 .animation-delay-200 {
   animation-delay: 0.2s;

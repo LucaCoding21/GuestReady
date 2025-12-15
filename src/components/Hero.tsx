@@ -14,7 +14,11 @@ const Hero = () => {
       <div className="absolute inset-0">
         <img
           src="/hero-kitchen.jpg"
+          srcSet="/hero-kitchen-mobile.jpg 1200w, /hero-kitchen.jpg 2000w"
+          sizes="100vw"
           alt="Immaculately clean modern kitchen"
+          fetchPriority="high"
+          decoding="async"
           className={`w-full h-full object-cover transition-all duration-[1.5s] ease-out ${
             isLoaded ? 'scale-100 opacity-100' : 'scale-110 opacity-0'
           }`}
@@ -62,7 +66,7 @@ const Hero = () => {
             <div className={`mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6 transition-all duration-700 delay-[1100ms] ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {/* Book This Week - Always SMS */}
               <a
-                href="sms:7789970335"
+                href="sms:7789970335?body=Hi!%20I%27d%20like%20to%20book%20a%20cleaning%20this%20week."
                 className="group inline-flex items-center justify-center gap-3 w-full sm:w-auto px-12 sm:px-8 py-4 bg-teal-500 text-white font-bold text-lg rounded-full transition-all hover:scale-105 hover:bg-teal-600 hover:shadow-[0_0_40px_rgba(20,184,166,0.4)]"
               >
                 <span>Book This Week</span>
@@ -123,8 +127,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-40 transition-all duration-700 delay-[1500ms] ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
+      {/* Scroll Indicator - Hidden on mobile to avoid overlap with CTAs */}
+      <div className={`hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2 z-40 transition-all duration-700 delay-[1500ms] ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <div className="flex flex-col items-center gap-2 text-warm-600">
           <span className="text-xs font-medium uppercase tracking-widest">Scroll</span>
           <div className="w-6 h-10 rounded-full border-2 border-warm-300 flex items-start justify-center p-2">
