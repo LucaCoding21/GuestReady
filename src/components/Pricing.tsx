@@ -32,9 +32,10 @@ const packages = [
     name: 'Premium Host Package',
     price: 499,
     size: 'Up to 4 bed / 3 bath',
-    description: '+$50 for bedsheets and laundry',
+    description: 'The ultimate hosting package',
     features: [
-      'Includes Deep Clean Service',
+      'Includes Holiday Deep Clean',
+      'Bedsheets & laundry service',
       'Fridge & oven detail',
       'Interior windows',
       'Cabinet fronts, curtains & walls',
