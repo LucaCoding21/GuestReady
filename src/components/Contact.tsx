@@ -68,7 +68,6 @@ const Contact = () => {
     setIsSubmitting(false);
 
     if (error) {
-      console.error('Supabase error:', error.message, error.code, error.details);
       setSubmitStatus('error');
       return;
     }
