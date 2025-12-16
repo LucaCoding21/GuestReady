@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { supabase } from '../lib/supabase';
 
 const serviceOptions = [
   'Guest-Ready Clean',
@@ -17,12 +18,36 @@ const Footer = () => {
     service: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    window.gtag?.('event', 'form_submit', { form_name: 'quote_request', location: 'footer' });
-    console.log('Form submitted:', formData);
-    alert('Thank you! We\'ll be in touch within 24 hours.');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const { error } = await supabase
+        .from('quote_requests')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || null,
+          service: formData.service || null,
+          message: formData.message || null,
+        });
+
+      if (error) throw error;
+
+      window.gtag?.('event', 'form_submit', { form_name: 'quote_request', location: 'footer' });
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', phone: '', service: '', message: '' });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -153,10 +178,22 @@ const Footer = () => {
             {/* Submit */}
             <button
               type="submit"
-              className="mt-6 w-full py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold rounded-xl hover:from-teal-600 hover:to-teal-700 transition-all hover:shadow-lg"
+              disabled={isSubmitting}
+              className="mt-6 w-full py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold rounded-xl hover:from-teal-600 hover:to-teal-700 transition-all hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Request
+              {isSubmitting ? 'Sending...' : 'Send Request'}
             </button>
+
+            {submitStatus === 'success' && (
+              <p className="mt-4 text-center text-green-400 font-medium">
+                Thank you! We'll be in touch within 24 hours.
+              </p>
+            )}
+            {submitStatus === 'error' && (
+              <p className="mt-4 text-center text-red-400 font-medium">
+                Something went wrong. Please try again or text us directly.
+              </p>
+            )}
           </form>
         </div>
       </div>
