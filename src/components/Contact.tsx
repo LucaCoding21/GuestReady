@@ -68,7 +68,7 @@ const Contact = () => {
     setIsSubmitting(false);
 
     if (error) {
-      console.error('Error submitting form:', error);
+      console.error('Supabase error:', error.message, error.code, error.details);
       setSubmitStatus('error');
       return;
     }
