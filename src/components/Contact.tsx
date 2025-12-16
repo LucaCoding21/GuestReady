@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { supabase } from '../lib/supabase';
 
 const serviceOptions = [
   'Guest-Ready Clean',
@@ -17,6 +18,8 @@ const frequencyOptions = [
 
 const Contact = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -44,11 +47,41 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you! We\'ll be in touch within 24 hours.');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    // Combine frequency into message if provided
+    const fullMessage = formData.frequency
+      ? `Timing: ${formData.frequency}\n\n${formData.message}`.trim()
+      : formData.message;
+
+    const { error } = await supabase.from('quote_requests').insert({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone || null,
+      service: formData.service || null,
+      message: fullMessage || null,
+    });
+
+    setIsSubmitting(false);
+
+    if (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+      return;
+    }
+
+    setSubmitStatus('success');
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      service: '',
+      frequency: '',
+      message: '',
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -270,14 +303,29 @@ const Contact = () => {
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold text-lg rounded-xl hover:from-teal-600 hover:to-teal-700 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+                  disabled={isSubmitting}
+                  className="w-full py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white font-bold text-lg rounded-xl hover:from-teal-600 hover:to-teal-700 transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  Check Availability
+                  {isSubmitting ? 'Sending...' : 'Check Availability'}
                 </button>
 
-                <p className="text-center text-sm text-warm-500">
-                  We reply within 10 minutes. No spam, ever.
-                </p>
+                {submitStatus === 'success' && (
+                  <p className="text-center text-sm text-green-600 font-medium">
+                    Thank you! We'll be in touch within 24 hours.
+                  </p>
+                )}
+
+                {submitStatus === 'error' && (
+                  <p className="text-center text-sm text-red-600 font-medium">
+                    Something went wrong. Please try again or call us directly.
+                  </p>
+                )}
+
+                {submitStatus === 'idle' && (
+                  <p className="text-center text-sm text-warm-500">
+                    We reply within 10 minutes. No spam, ever.
+                  </p>
+                )}
               </div>
             </form>
           </div>
